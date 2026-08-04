@@ -14,10 +14,10 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect('mongodb://localhost:27017/PredictiveMaintenance')
-// .then(() => {console.log("MongoDB Connected")
-// console.log(mongoose.connection.readyState)})
-// .catch(err => console.log(err))
+mongoose.connect('mongodb://anujbag12_db_user:xSQPldMPOY0yYZWh@ac-uvq0u7x-shard-00-00.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-01.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-02.4ftql5a.mongodb.net:27017/?ssl=true&replicaSet=atlas-geuk6t-shard-0&authSource=admin&appName=PredictiveManitenance')
+.then(() => {console.log("MongoDB Connected")
+console.log(mongoose.connection.readyState)})
+.catch(err => console.log(err))
 
 app.post('/login',(req,res)=>{
     const {role,email,password} = req.body
