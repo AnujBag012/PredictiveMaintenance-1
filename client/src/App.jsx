@@ -8,7 +8,7 @@ import Electronic from './components/Electronic'
 import Mechanical from './components/Mechanical'
 import Pneumatic from './components/Pneumatic'
 import Signup from './components/Signup'
-import Login from './components/login'
+import Login from './components/Login'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const App = () => {
@@ -16,8 +16,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path='/Login' element={<Login/>}></Route>
+        <Route path="/" element={<Navigate to="/Login" />} />
         <Route path='/dashboard' element={
           <ProtectedRoute>
             <Dashboard />

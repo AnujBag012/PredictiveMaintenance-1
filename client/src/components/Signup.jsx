@@ -17,7 +17,7 @@ const Signup = () => {
         if(role != '' && role != 'Choose Role' && name != '' && email != '' && password != ''){
           axios.post('https://predictivemaintenance-1.onrender.com/signup', {role, name, email, password})
           .then(result=>{console.log(result)
-              navigate('/login')
+              navigate('/Login')
           })
           .catch(err=>console.log(err))
         }
