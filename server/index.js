@@ -35,14 +35,36 @@ app.post('/login',(req,res)=>{
     })
 })
 
-app.post('/signup',(req,res)=>{
-    // console.log("Route Hit")
-    // console.log(req.body)
+app.post('/signup', async (req, res) => {
+    try {
+        console.log("Signup Request:", req.body);
 
-    EmployeeModel.create(req.body)
-    .then(employees => res.json(employees))
-    .catch(err => res.json(err))
-})
+        const employee = await EmployeeModel.create(req.body);
+
+        console.log("User Saved:", employee);
+
+        res.status(201).json({
+            success: true,
+            employee
+        });
+    } catch (err) {
+        console.error("Signup Error:", err);
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
+// app.post('/signup',(req,res)=>{
+//     // console.log("Route Hit")
+//     // console.log(req.body)
+
+//     EmployeeModel.create(req.body)
+//     .then(employees => res.json(employees))
+//     .catch(err => res.json(err))
+// })
 // app.post('/signup', async (req, res) => {
 
 //     try {
