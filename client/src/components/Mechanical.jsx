@@ -89,7 +89,7 @@ const Mechanical = () => {
             try {
 
                 const res = await axios.get(
-                    'http://localhost:3001/api/live-data'
+                    'https://predictivemaintenance-1.onrender.com/api/live-data'
                 )
 
                 const hasData = res.data && res.data.value !== undefined
@@ -245,7 +245,7 @@ const Mechanical = () => {
                 break
 
             default:
-                duration = 60 * 60 * 1000
+                duration = 15 * 60 * 1000
         }
 
         const startTime = latestTimestamp - duration
