@@ -13,7 +13,7 @@ const Login = () => {
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        axios.post('http://localhost:3001/login',{role, email, password})
+        axios.post('https://predictivemaintenance-1.onrender.com/login',{role, email, password})
         .then(result => {
             console.log(result)
             if(result.data === 'Success'){

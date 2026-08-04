@@ -15,7 +15,7 @@ const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if(role != '' && role != 'Choose Role' && name != '' && email != '' && password != ''){
-          axios.post('http://localhost:3001/signup', {role, name, email, password})
+          axios.post('https://predictivemaintenance-1.onrender.com/signup', {role, name, email, password})
           .then(result=>{console.log(result)
               navigate('/login')
           })

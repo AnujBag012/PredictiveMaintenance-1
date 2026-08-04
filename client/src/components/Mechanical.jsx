@@ -58,7 +58,7 @@ const Mechanical = () => {
         const loadHistory = async () => {
 
             const res = await axios.get(
-                'http://localhost:3001/api/history'
+                'https://predictivemaintenance-1.onrender.com/api/history'
             )
 
             const history = res.data.map(item => ({
