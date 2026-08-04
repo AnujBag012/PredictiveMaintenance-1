@@ -14,10 +14,10 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect('mongodb://anujbag12_db_user:xSQPldMPOY0yYZWh@ac-uvq0u7x-shard-00-00.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-01.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-02.4ftql5a.mongodb.net:27017/?ssl=true&replicaSet=atlas-geuk6t-shard-0&authSource=admin&appName=PredictiveManitenance')
-.then(() => {console.log("MongoDB Connected")
-console.log(mongoose.connection.readyState)})
-.catch(err => console.log(err))
+// mongoose.connect('mongodb://anujbag12_db_user:xSQPldMPOY0yYZWh@ac-uvq0u7x-shard-00-00.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-01.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-02.4ftql5a.mongodb.net:27017/?ssl=true&replicaSet=atlas-geuk6t-shard-0&authSource=admin&appName=PredictiveManitenance')
+// .then(() => {console.log("MongoDB Connected")
+// console.log(mongoose.connection.readyState)})
+// .catch(err => console.log(err))
 
 app.post('/login',(req,res)=>{
     const {role,email,password} = req.body
@@ -178,13 +178,13 @@ app.get('/api/live-data', (req, res) => {
 
 
 
-app.listen(3001, ()=>{
-    console.log("Server is running")
-})
+// app.listen(3001, ()=>{
+//     console.log("Server is running")
+// })
 
 async function startServer() {
     try {
-        await mongoose.connect('mongodb://anujbag12_db_user:xSQPldMPOY0yYZWh@ac-uvq0u7x-shard-00-00.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-01.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-02.4ftql5a.mongodb.net:27017/?ssl=true&replicaSet=atlas-geuk6t-shard-0&authSource=admin&appName=PredictiveManitenance');
+        await mongoose.connect('mongodb+srv://anujbag12_db_user:xSQPldMPOY0yYZWh@predictivemanitenance.4ftql5a.mongodb.net/?appName=PredictiveManitenance');
 
         console.log("MongoDB Connected");
         console.log("Ready State:", mongoose.connection.readyState);
