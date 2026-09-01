@@ -6,6 +6,15 @@ const EmployeeModel = require('./models/Employee')
 const fs = require('fs')
 const csv = require('csv-parser')
 
+const Rollers = require("./models/Rollers")
+const TrackFrame = require("./models/TrackFrame")
+const TrackChains = require("./models/TrackChains")
+const SwingMotor = require("./models/SwingMotor")
+const CylinderRods = require("./models/CylinderRods")
+const Pistons = require("./models/Pistons")
+// const Couplings = require("./models/Couplings")
+// const Bearings = require("./models/Bearings")
+
 let csvData = []
 let currentIndex = 0
 
@@ -199,3 +208,74 @@ async function startServer() {
 }
 
 startServer();
+
+
+//fetching data of each components from the database
+app.get("/api/rollers/data", async (req, res) => {
+
+    try {
+
+        const lubrication = await Rollers
+            .findOne({
+                maintenanceType: "Lubrication"
+            })
+            .sort({ date: -1 })
+
+        const bearingChange = await Rollers
+            .findOne({
+                maintenanceType: "Bearing Change"
+            })
+            .sort({ date: -1 })
+
+        const inspection = await Rollers
+            .findOne({
+                maintenanceType: "Inspection"
+            })
+            .sort({ date: -1 })
+
+        const oilChange = await Rollers
+            .findOne({
+                maintenanceType: "Oil Change"
+            })
+            .sort({ date: -1 })
+
+
+        res.json({
+            lubrication,
+            bearingChange,
+            inspection,
+            oilChange
+        })
+
+    } catch (error) {
+
+        console.error(error)
+
+        res.status(500).json({
+            message: "Failed to fetch Rollers data"
+        })
+
+    }
+
+})
+app.get("/api/rollers/history", async (req, res) => {
+
+    try {
+
+        const history = await Rollers
+            .find({})
+            .sort({ date: -1 })
+
+        res.json(history)
+
+    } catch (error) {
+
+        console.error(error)
+
+        res.status(500).json({
+            message: "Failed to fetch Rollers history"
+        })
+
+    }
+
+})
