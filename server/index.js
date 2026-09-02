@@ -301,25 +301,25 @@ app.get("/api/rollers/data", async (req, res) => {
             .findOne({
                 maintenanceType: "Lubrication"
             })
-            .sort({ date: -1 })
+            .sort({ timestamp: -1 })
 
         const bearingChange = await Rollers
             .findOne({
                 maintenanceType: "Bearing Change"
             })
-            .sort({ date: -1 })
+            .sort({ timestamp: -1 })
 
         const inspection = await Rollers
             .findOne({
                 maintenanceType: "Inspection"
             })
-            .sort({ date: -1 })
+            .sort({ timestamp: -1 })
 
         const oilChange = await Rollers
             .findOne({
                 maintenanceType: "Oil Change"
             })
-            .sort({ date: -1 })
+            .sort({ timestamp: -1 })
 
 
         res.json({
@@ -346,7 +346,7 @@ app.get("/api/rollers/history", async (req, res) => {
 
         const history = await Rollers
             .find({})
-            .sort({ date: -1 })
+            .sort({ timestamp: -1 })
 
         res.json(history)
 
