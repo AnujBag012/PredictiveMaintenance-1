@@ -14,8 +14,8 @@ const RollersSchema = new mongoose.Schema({
     },
 
     timestamp: {
-    type: Date,
-    required: true
+        type: Date,
+        default: Date.now
 }
 
 
