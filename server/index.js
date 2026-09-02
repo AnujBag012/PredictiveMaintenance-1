@@ -37,9 +37,9 @@ const componentModels = {
 
     pistons: Pistons,
 
-    couplings: Couplings,
+    // couplings: Couplings,
 
-    bearings: Bearings
+    // bearings: Bearings
 
 };
 
