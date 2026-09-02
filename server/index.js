@@ -27,11 +27,11 @@ const componentModels = {
 
     rollers: Rollers,
 
-    "track-frames": TrackFrames,
+    "track-frames": TrackFrame,
 
     "track-chains": TrackChains,
 
-    "swing-motors": SwingMotors,
+    "swing-motors": SwingMotor,
 
     "cylinder-rods": CylinderRods,
 
