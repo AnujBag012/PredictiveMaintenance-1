@@ -23,6 +23,26 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+const componentModels = {
+
+    rollers: Rollers,
+
+    "track-frames": TrackFrames,
+
+    "track-chains": TrackChains,
+
+    "swing-motors": SwingMotors,
+
+    "cylinder-rods": CylinderRods,
+
+    pistons: Pistons,
+
+    couplings: Couplings,
+
+    bearings: Bearings
+
+};
+
 // mongoose.connect('mongodb://anujbag12_db_user:xSQPldMPOY0yYZWh@ac-uvq0u7x-shard-00-00.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-01.4ftql5a.mongodb.net:27017,ac-uvq0u7x-shard-00-02.4ftql5a.mongodb.net:27017/?ssl=true&replicaSet=atlas-geuk6t-shard-0&authSource=admin&appName=PredictiveManitenance')
 // .then(() => {console.log("MongoDB Connected")
 // console.log(mongoose.connection.readyState)})
@@ -208,6 +228,68 @@ async function startServer() {
 }
 
 startServer();
+
+//Posting the update
+app.post(
+    "/api/maintenance/:component",
+
+    async (req, res) => {
+
+        try {
+
+            const { component } = req.params;
+
+            const { maintenanceType } = req.body;
+
+
+            const Model = componentModels[component];
+
+
+            if (!Model) {
+
+                return res.status(404).json({
+                    message: "Component not found"
+                });
+
+            }
+
+
+            const maintenanceRecord =
+                await Model.create({
+
+                    maintenanceType
+
+                });
+
+
+            res.status(201).json({
+
+                success: true,
+
+                message: "Maintenance updated successfully",
+
+                data: maintenanceRecord
+
+            });
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            res.status(500).json({
+
+                success: false,
+
+                message: "Failed to update maintenance"
+
+            });
+
+        }
+
+    }
+);
 
 
 //fetching data of each components from the database
