@@ -13,18 +13,10 @@ const CylinderRodsSchema = new mongoose.Schema({
         ]
     },
 
-    date: {
-        type: Date,
-        required: true
-    },
-
-    time: {
-        type: String,
-        required: true
+    timestamp: {
+    type: Date,
+    required: true
     }
-
-}, {
-    timestamps: true
 })
 
 module.exports = mongoose.model(

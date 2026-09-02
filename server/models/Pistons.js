@@ -13,18 +13,10 @@ const PistonsSchema = new mongoose.Schema({
         ]
     },
 
-    date: {
-        type: Date,
-        required: true
-    },
-
-    time: {
-        type: String,
-        required: true
-    }
-
-}, {
-    timestamps: true
+    timestamp: {
+    type: Date,
+    required: true
+}
 })
 
 module.exports = mongoose.model(
