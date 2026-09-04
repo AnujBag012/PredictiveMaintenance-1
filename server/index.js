@@ -293,7 +293,7 @@ app.post(
 
 
 //fetching data of each components from the database
-app.get("/api/rollers/data", async (req, res) => {
+app.get("/api/:rollers/data", async (req, res) => {
 
     try {
 
@@ -340,7 +340,7 @@ app.get("/api/rollers/data", async (req, res) => {
     }
 
 })
-app.get("/api/rollers/history", async (req, res) => {
+app.get("/api/:rollers/history", async (req, res) => {
 
     try {
 
