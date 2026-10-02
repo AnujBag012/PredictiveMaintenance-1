@@ -2,6 +2,7 @@ import axios from 'axios'
 // import { useEffect, useState } from 'react'
 import { useEffect, useState, useRef } from 'react'
 // import { useEffect, useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import {
     LineChart,
@@ -14,6 +15,7 @@ import {
 } from "recharts";
 
 const Mechanical = () => {
+    const navigate = useNavigate();
 
     // GRAPH DATA
     const [graphs, setGraphs] = useState({
@@ -48,9 +50,43 @@ const Mechanical = () => {
     const [streamEnded, setStreamEnded] = useState(false)
     const [selectedRange, setSelectedRange] = useState("ALL")
 
+    // const components = [
+    //     "Rollers","Track Frame","Track Chains","Swing Motor",
+    //     "Cylinder Rods","Pistons","Couplings","Bearings"
+    // ]
     const components = [
-        "Rollers","Track Frame","Track Chains","Swing Motor",
-        "Cylinder Rods","Pistons","Couplings","Bearings"
+        {
+            name: "Rollers",
+            slug: "rollers"
+        },
+        {
+            name: "Track Frame",
+            slug: "track-frame"
+        },
+        {
+            name: "Track Chains",
+            slug: "track-chains"
+        },
+        {
+            name: "Swing Motor",
+            slug: "swing-motor"
+        },
+        {
+            name: "Cylinder Rods",
+            slug: "cylinder-rods"
+        },
+        {
+            name: "Pistons",
+            slug: "pistons"
+        },
+        {
+            name: "Couplings",
+            slug: "couplings"
+        },
+        {
+            name: "Bearings",
+            slug: "bearings"
+        }
     ]
 
     useEffect(() => {
@@ -393,16 +429,21 @@ const Mechanical = () => {
             const key = `component${index + 1}`
 
             return (
-
                 <div
-                    key={index}
+                    key={component.slug}
+                    onClick={() =>
+                        navigate(`/${component.slug}/data`)
+                        
+                    }
                     className="
-                    bg-white
-                    rounded-[30px]
-                    p-5
-                    shadow-lg
-                    hover:shadow-2xl
-                    transition-all duration-300
+                        bg-white
+                        rounded-[30px]
+                        p-5
+                        shadow-lg
+                        hover:shadow-2xl
+                        transition-all
+                        duration-300
+                        cursor-pointer
                     "
                 >
 
@@ -413,7 +454,7 @@ const Mechanical = () => {
                         text-[#001c72]
                         mb-4
                     ">
-                        {component}
+                        {component.name}
                     </h3>
 
                     <div className="h-[240px]">
@@ -490,7 +531,7 @@ const Mechanical = () => {
         `}>
 
             <b className="text-lg">
-                {popup.component}
+                {popup.component.name}
             </b>
 
             <p className="mt-1">
@@ -539,7 +580,7 @@ const Mechanical = () => {
                     >
 
                         <b className="text-[#001c72]">
-                            {n.component}
+                            {n.component.name}
                         </b>
 
                         <p className="text-gray-600 mt-1">

@@ -15,9 +15,9 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
   const handleLogout = () => {
-  localStorage.removeItem("isLoggedIn");
-  navigate("/login");
-};
+    localStorage.removeItem("isLoggedIn");
+    navigate("/login");
+  };
 
   const cards = [
     {
@@ -84,7 +84,7 @@ const Dashboard = () => {
 
             <button className="w-full px-5 py-4 flex items-center gap-4 hover:bg-white/10 rounded-2xl transition-all duration-300">
               <Cpu />
-              <span className="text-xl">Components</span>
+              <span className="text-xl" onClick={()=> navigate('/Component-Maintenance')}>Components Overview</span>
             </button>
 
             <button className="w-full px-5 py-4 flex items-center gap-4 hover:bg-white/10 rounded-2xl transition-all duration-300">
@@ -94,9 +94,9 @@ const Dashboard = () => {
               </span>
             </button>
 
-            <button className="w-full px-5 py-4 flex items-center gap-4 hover:bg-white/10 rounded-2xl transition-all duration-300">
+            <button className="w-full px-5 py-4 flex items-center gap-4 hover:bg-white/10 rounded-2xl transition-all duration-300" onClick={()=> navigate("/Maintenance-Order")}>
               <Wrench />
-              <span className="text-xl">Maintenance</span>
+              <span className="text-xl">Maintenance Lists</span>
             </button>
 
             <button className="w-full px-5 py-4 flex items-center gap-4 hover:bg-white/10 rounded-2xl transition-all duration-300">

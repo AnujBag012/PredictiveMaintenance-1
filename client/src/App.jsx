@@ -9,6 +9,10 @@ import Mechanical from './components/Mechanical'
 import Pneumatic from './components/Pneumatic'
 import Signup from './components/Signup'
 import Login from './components/Login'
+import ComponentOverview from './components/ComponentOverview'
+import UpdateMaintenance from './components/UpdateMaintenance'
+import ComponentData from './components/ComponentData'
+import MaintenanceList from './components/MaintenanceList'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const App = () => {
@@ -49,6 +53,34 @@ const App = () => {
         <Route path='/dashboard/pneumatic' element={
           <ProtectedRoute>
             <Pneumatic />
+          </ProtectedRoute>
+          
+          }>
+        </Route>
+        <Route path='/Component-Maintenance' element={
+          <ProtectedRoute>
+            <ComponentOverview />
+          </ProtectedRoute>
+          
+          }>
+        </Route>
+        <Route path='/Component-Maintenance/:component' element={
+          <ProtectedRoute>
+            <UpdateMaintenance />
+          </ProtectedRoute>
+          
+          }>
+        </Route>
+        <Route path='/:component/data' element={
+          <ProtectedRoute>
+            <ComponentData />
+          </ProtectedRoute>
+          
+          }>
+        </Route>
+        <Route path='/Maintenance-Order' element={
+          <ProtectedRoute>
+            <MaintenanceList />
           </ProtectedRoute>
           
           }>
